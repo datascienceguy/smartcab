@@ -23,9 +23,21 @@ class LearningAgent(Agent):
         deadline = self.env.get_deadline(self)
 
         # TODO: Update state
-        
+
         # TODO: Select action according to your policy
-        action = None
+
+        # Pay attention to the traffic light
+        if(inputs['light'] == 'green'):
+            action = self.next_waypoint
+        else:
+            action = None
+
+        # Randomly select the next action
+        # possibleActions = [None, 'left', 'right', 'forward']
+        # action = random.choice(possibleActions)
+
+        # self.next_waypoint is the correct action that should be taken next
+        # action = self.next_waypoint
 
         # Execute action and get reward
         reward = self.env.act(self, action)
@@ -41,10 +53,10 @@ def run():
     # Set up environment and agent
     e = Environment()  # create environment (also adds some dummy traffic)
     a = e.create_agent(LearningAgent)  # create agent
-    e.set_primary_agent(a, enforce_deadline=False)  # set agent to track
+    e.set_primary_agent(a, enforce_deadline=True)  # set agent to track
 
     # Now simulate it
-    sim = Simulator(e, update_delay=1.0)  # reduce update_delay to speed up simulation
+    sim = Simulator(e, update_delay=0.5)  # reduce update_delay to speed up simulation
     sim.run(n_trials=10)  # press Esc or close pygame window to quit
 
 
