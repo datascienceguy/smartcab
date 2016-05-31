@@ -35,6 +35,7 @@ class Environment(object):
         self.t = 0
         self.agent_states = OrderedDict()
         self.status_text = ""
+        self.num_successes = 0
 
         # Road network
         self.grid_size = (8, 6)  # (cols, rows)
@@ -192,6 +193,7 @@ class Environment(object):
                     reward += 10  # bonus
                 self.done = True
                 print "Environment.act(): Primary agent has reached destination!"  # [debug]
+                self.num_successes += 1
             self.status_text = "state: {}\naction: {}\nreward: {}".format(agent.get_state(), action, reward)
             #print "Environment.act() [POST]: location: {}, heading: {}, action: {}, reward: {}".format(location, heading, action, reward)  # [debug]
 

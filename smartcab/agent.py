@@ -15,7 +15,7 @@ class LearningAgent(Agent):
         self.q = {}
         self.possibleActions = [None, 'left', 'right', 'forward']
         self.gamma = 0.5
-        self.epsilon = 0.25
+        self.epsilon = 1
         self.alpha = 0.2
         self.rewardTotalForTrip = 0
 
@@ -24,7 +24,7 @@ class LearningAgent(Agent):
         # TODO: Prepare for a new trip; reset any variables here, if required
         self.rewardTotalForTrip = 0
 
-        print self.q
+        # print self.q
 
     def update(self, t):
         # Gather inputs
@@ -86,8 +86,8 @@ def run():
     e.set_primary_agent(a, enforce_deadline=True)  # set agent to track
 
     # Now simulate it
-    sim = Simulator(e, update_delay=0.001)  # reduce update_delay to speed up simulation
-    sim.run(n_trials=1000)  # press Esc or close pygame window to quit
+    sim = Simulator(e, update_delay=0.0001)  # reduce update_delay to speed up simulation
+    sim.run(n_trials=100)  # press Esc or close pygame window to quit
 
 
 if __name__ == '__main__':

@@ -87,6 +87,7 @@ class Simulator(object):
 
             if self.quit:
                 break
+        print "Num successful trips: {}".format(self.env.num_successes)
 
     def render(self):
         # Clear screen
