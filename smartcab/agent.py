@@ -14,7 +14,7 @@ class LearningAgent(Agent):
         # TODO: Initialize any additional variables here
         self.q = {}
         self.possibleActions = [None, 'left', 'right', 'forward']
-        self.gamma = 0.5
+        self.gamma = 0.15
         self.epsilon = 0.15
         self.alpha = 0.2
         self.rewardTotalForTrip = 0
